@@ -12,10 +12,10 @@ stages:
   - build
 
 before_script:
-  - mkdir -p /go/src/gitlab.com/pantomath-io /go/src/_/builds
-  - cp -r $CI_PROJECT_DIR /go/src/gitlab.com/pantomath-io/pantomath
-  - ln -s /go/src/gitlab.com/pantomath-io /go/src/_/builds/pantomath-io
-  - make dep
+  - mkdir -p /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api /go/src/_/builds
+  - cp -r $CI_PROJECT_DIR /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api
+  - ln -s /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api /go/src/_/builds/pantomath-io
+
 
 build:
   stage: build
