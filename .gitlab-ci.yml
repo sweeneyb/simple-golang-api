@@ -9,7 +9,6 @@ cache:
     - /go/src/gopkg.in
 
 stages:
-  - test
   - build
 
 before_script:
