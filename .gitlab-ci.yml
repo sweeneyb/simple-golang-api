@@ -14,7 +14,7 @@ stages:
 before_script:
   - mkdir -p /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api /go/src/_/builds
   - cp -r $CI_PROJECT_DIR /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api
-  - ln -s /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api /go/src/_/builds/pantomath-io
+  - ln -s /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api /go/src/_/builds/simple-golang-api
 
 
 build:
