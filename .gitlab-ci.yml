@@ -1,23 +1,27 @@
-image: golang:1.9
-
-cache:
-  paths:
-    - /apt-cache
-    - /go/src/github.com
-    - /go/src/golang.org
-    - /go/src/google.golang.org
-    - /go/src/gopkg.in
+image: golang:latest
 
 stages:
+  - test
   - build
+  - deploy
 
-before_script:
-  - mkdir -p /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api /go/src/_/builds
-  - cp -r $CI_PROJECT_DIR /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api
-  - ln -s /go/src/sftp.briansweeney.dev/gitlab-instance-010d883b/simple-golang-api /go/src/_/builds/simple-golang-api
+format:
+  stage: test
+  script:
+    - go fmt $(go list ./... | grep -v /vendor/)
+    - go vet $(go list ./... | grep -v /vendor/)
+    - go test -race $(go list ./... | grep -v /vendor/)
 
-
-build:
+compile:
   stage: build
   script:
-    - make build
+    - mkdir -p api
+    - go build -o api ./...
+  artifacts:
+    paths:
+      - api
+
+deploy:
+  stage: deploy
+  script: echo "Define your deployment script!"
+  environment: production
